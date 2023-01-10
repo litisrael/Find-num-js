@@ -1,20 +1,32 @@
 function getRandomNumber() {
-    return Math.floor(Math.random() * 50000) + 1;
+  return Math.floor(Math.random() * 50000) + 1;
+}
+
+export const arrIncludesClassic = (arr, number) => {
+  return arr.includes(number);
+};
+  
+export  const searchLog = (arr, target) => {
+  if (arr.length < 1) {
+    return false
   }
 
- export const arrMessy= [];
-  
- 
- export const arrIncludesClassic = (arr, number) => {
-    return arr.includes(number);
-  };
-  
-  export const arrSorted = [...arrMessy].sort((a, b) => a - b)
-  export  const searchLog = (arr, target) => {
-  if (arr.length < 1) {
-    return arr[0]
+  if (arr.length===1 && arr[0]===target){
+    return true
   }
+
   const mid = Math.floor(arr.length / 2)
+
+  if (arr[mid] === target) return true
+
+  const newArr = arr[mid] < target 
+    ? arr.slice(mid) 
+    : arr.slice(0, mid)
+  
+  return searchLog(newArr, target) 
+
+
+/*
   if (arr[mid] === target) {
     return true
   } else if (arr[mid] < target) {
@@ -22,50 +34,55 @@ function getRandomNumber() {
   } else {
     return searchLog(arr.slice(0, mid), target)
   }
+  */
 }
 
 class Node {
-  constructor(value){
+  constructor(index, value) {
+    this.index = index
     this.value = value
     this.next = null
   }
-
 }
+
 class LinkedList{
-  constructor(head= null){
-    this.head = head
-}
-  addNode(data) {
-  const newNode = new Node(data);
-  if (this.head === null) {
-    this.head = newNode;
-    this.tail = newNode;
-  } else {
-    newNode.next = this.head;
+  constructor() {
+    this.head = null
+  }
+
+  addNode(index, data) {
+    const newNode = new Node(index, data);
+
+    if (this.head) newNode.next = this.head;
+
     this.head = newNode;
   }
-}
 
-find(data) {
-  let currentNode = this.head;
-  while (currentNode !== null) {
-    if (currentNode.value[1] === data) {
-      return true;
+  find(value) {
+    let currentNode = this.head;
+
+    while (currentNode !== null) {
+      if (currentNode.value === value) {
+        return currentNode.index;
+      }
+
+      currentNode = currentNode.next;
     }
-    currentNode = currentNode.next;
+
+    return false;
   }
-  return false;
 }
 
-}
-const ll = new LinkedList();
+const listUnsorted = new LinkedList();
+const arrUnsorted = [];
 
 for (let i = 0; i < 50000; i++) {
-
-  ll.addNode([i,getRandomNumber()]);
-  arrMessy.push(getRandomNumber());
+  listUnsorted.addNode(i,getRandomNumber());
+  arrUnsorted.push(getRandomNumber());
 }
 
-console.log(ll.head)
+const arrSorted = [...[arrUnsorted]].sort((a, b) => a - b)
 
-console.log(ll.find(3456))
+export { listUnsorted, arrUnsorted, arrSorted }
+
+console.log(listUnsorted.find(875)) 
