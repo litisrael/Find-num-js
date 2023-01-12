@@ -14,7 +14,6 @@ export  const searchLog = (arr, target) => {
   if (arr.length===1 && arr[0]===target){
     return true
   }
-
   const mid = Math.floor(arr.length / 2)
 
   if (arr[mid] === target) return true
@@ -24,17 +23,6 @@ export  const searchLog = (arr, target) => {
     : arr.slice(0, mid)
   
   return searchLog(newArr, target) 
-
-
-/*
-  if (arr[mid] === target) {
-    return true
-  } else if (arr[mid] < target) {
-    return searchLog(arr.slice(mid), target)
-  } else {
-    return searchLog(arr.slice(0, mid), target)
-  }
-  */
 }
 
 class Node {
@@ -74,10 +62,12 @@ class LinkedList{
 }
 
 const listUnsorted = new LinkedList();
+const listSorted = new LinkedList();
 const arrUnsorted = [];
 
 for (let i = 0; i < 50000; i++) {
   listUnsorted.addNode(i,getRandomNumber());
+  
   arrUnsorted.push(getRandomNumber());
 }
 
@@ -85,4 +75,21 @@ const arrSorted = [...[arrUnsorted]].sort((a, b) => a - b)
 
 export { listUnsorted, arrUnsorted, arrSorted }
 
-console.log(listUnsorted.find(875)) 
+
+const valuesOflist = []
+
+
+const printValuesList = (head)=>{
+  let current = head
+  while(current !== null){
+    valuesOflist.push(current.value)
+  current = current.next
+}
+}
+printValuesList(listUnsorted.head)
+const sortedValues = valuesOflist.sort((a, b) => a - b);
+
+for (let i = 0; i < 50000; i++){
+  listSorted.addNode(i,sortedValues[i])
+}
+console.log(listSorted)
