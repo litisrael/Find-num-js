@@ -8,14 +8,14 @@ import {
   arrIncludesClassic,
 } from "./utilites.js";
 const rl = readline.createInterface({ input, output });
-console.log(arrSorted);
+//console.log(arrSorted);
 const ask = async () => {
   const answerNumber = await rl.question(
     "Tell me what number you're looking for, I'll check if I have it\n"
   );
 
   const answerSearch = await rl.question(
-    "How do you prefer that I search?\n in array unsorted respons 1\n in array sorted, respons 2\n in array list unsorted, respons 3 \n"
+    "How do you prefer that I search?\n in array unsorted respons 1\n in array sorted, respons 2\n in  linked list unsorted, respons 3 \n in  linked list sorted, respons 4 \n"
   );
 
   if (answerSearch == 1) {
@@ -33,11 +33,16 @@ const ask = async () => {
         )
       : console.log(`the number ${answerSearch} is not in the list`);
   }
-  // {if(listUnsorted.find(parseInt(answerNumber)) !== false ){
-  //     console.log(`yes the number ${answerSearch} is in the node ${listUnsorted.find(parseInt(answerNumber))} `)
-  // }
-
-  // }
+  if (answerSearch == 4) {
+    listUnsorted.find(parseInt(answerNumber)) !== false
+      ? console.log(
+          `yes the number ${answerSearch} is in the node ${listUnsorted.find(
+            parseInt(answerNumber)
+          )} `
+        )
+      : console.log(`the number ${answerSearch} is not in the list`);
+  }
+  
   rl.close();
 };
 ask();
