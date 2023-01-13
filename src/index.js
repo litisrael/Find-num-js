@@ -42,7 +42,7 @@ const ask = async () => {
         )
       : console.log(`the number ${answerSearch} is not in the list`);
   }
-  
+
   rl.close();
 };
 ask();
