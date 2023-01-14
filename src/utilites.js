@@ -89,7 +89,6 @@ const printValuesList = (head)=>{
 
 printValuesList(listUnsorted.head)
 const sortedValues = valuesOflist.sort((a, b) => a - b);
-
 for (let i = 0; i < 50000; i++){
   listSorted.addNode(i,sortedValues[i])
 }
