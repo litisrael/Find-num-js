@@ -1,2 +1,3 @@
-console.log("shavua tov");
-console.log("prueba");
+"use strict";
+console.log("shavua");
+console.log("gbhnjm,k.");
