@@ -10,6 +10,7 @@ import {
 const rl = readline.createInterface({ input, output });
 //console.log(arrSorted);
 const ask = async () => {
+  
   const answerNumber = await rl.question(
     "Tell me what number you're looking for, I'll check if I have it\n"
   );
