@@ -7,6 +7,7 @@ import {
   searchLog,
   arrIncludesClassic,
 } from "./utilites.js";
+
 const rl = readline.createInterface({ input, output });
 //console.log(arrSorted);
 const ask = async () => {
